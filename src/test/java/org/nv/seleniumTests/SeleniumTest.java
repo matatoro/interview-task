@@ -29,9 +29,13 @@ public class SeleniumTest {
     }
 
     @Test()
-    public void LoginTest() throws InterruptedException {
+    public void LoginTest() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.openLoginPage();
+        try {
+            loginPage.openLoginPage();
+        } catch (IllegalArgumentException e) {
+            Assert.fail(e.getMessage());
+        }
         loginPage.loginWithCredentials(helper.getUser(), helper.getPass());
 
         boolean addBookButtonShown = loginPage.isAddBookButtonShown();
