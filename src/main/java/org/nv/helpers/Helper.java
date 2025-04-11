@@ -10,11 +10,11 @@ import java.util.Properties;
 @Getter
 public class Helper {
     private final Properties properties;
-    public final String baseUrl;
-    public final String loginEndpoint;
-    public final String searchEndpoint;
-    public  final  String user;
-    public final String pass;
+    private final String baseUrl;
+    private final String loginEndpoint;
+    private final String searchEndpoint;
+    private  final  String user;
+    private final String pass;
 
     public Helper() {
         this.properties = new Properties();
