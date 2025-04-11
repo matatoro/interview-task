@@ -1,15 +1,11 @@
 package org.nv.seleniumTests;
 
+import org.nv.helpers.Helper;
 import org.nv.pom.BookPage;
 import org.nv.pom.HomePage;
 import org.nv.pom.LoginPage;
-import org.nv.helpers.Helper;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -48,6 +44,7 @@ public class SeleniumTest {
                 {"gatsby"}
         };
     }
+
     @Test(dependsOnMethods = {"LoginTest"}, dataProvider = "searchTerms")
     public void SearchBookTest(String term) {
         HomePage homePage = new HomePage(driver);
@@ -59,7 +56,7 @@ public class SeleniumTest {
     }
 
     @Test()
-    public void BuyBookTest() throws InterruptedException {
+    public void BuyBookTest() {
         HomePage homePage = new HomePage(driver);
         homePage.selectFirstAvailableBook();
         BookPage bookPage = new BookPage(driver);
