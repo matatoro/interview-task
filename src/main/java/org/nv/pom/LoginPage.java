@@ -17,7 +17,11 @@ public class LoginPage extends BasePage {
 
     public void openLoginPage() {
         WebElement loginLink = driver.findElement(By.linkText(loginLinkText));
-        loginLink.click();
+        if (isElementClickable(loginLink)) {
+            loginLink.click();
+        } else {
+            throw new IllegalArgumentException("Login link is not clickable!");
+        }
     }
 
     public void loginWithCredentials(String username, String password) {
@@ -27,6 +31,6 @@ public class LoginPage extends BasePage {
     }
 
     public boolean isAddBookButtonShown() {
-           return isElementVisible(addBookButton);
+        return isElementVisible(addBookButton);
     }
 }
